@@ -1,10 +1,9 @@
 package com.szq.web.handler;
 
+import com.szq.web.helper.JwtTokenHelper;
 import com.szq.web.model.vo.LoginRspVO;
 import com.szq.web.utils.BaseResponse;
-import com.szq.web.utils.JwtTokenHelper;
-import com.szq.web.utils.ResultUtil;
-import lombok.extern.slf4j.Slf4j;
+import com.szq.web.utils.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,24 +15,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 用于处理身份验证成功后的逻辑
+ */
 @Component
-@Slf4j
 public class RestAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+
     @Autowired
     private JwtTokenHelper jwtTokenHelper;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        // 从 authentication 对象中获取用户的 UserDetails 实例，这里是获取用户的用户名
+        //从authentication获取userDetails实例，获取用户的用户名
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
-        // 通过用户名生成 Token
         String username = userDetails.getUsername();
+        //通过用户名生成token
         String token = jwtTokenHelper.generateToken(username);
-
-        // 返回 Token
+        Log.sdk.info("用户认证成功，token为：{}", token);
         LoginRspVO loginRspVO = LoginRspVO.builder().token(token).build();
 
-        ResultUtil.ok(response, BaseResponse.success(loginRspVO));
+        BaseResponse.ok(response,BaseResponse.success(loginRspVO));
     }
 }

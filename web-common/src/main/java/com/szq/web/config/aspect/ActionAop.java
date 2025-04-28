@@ -6,6 +6,10 @@ import com.szq.web.utils.Log;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
 @Aspect
@@ -19,6 +23,9 @@ public class ActionAop {
 
     @Before("action()")
     public void doBefore(JoinPoint joinPoint) {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        Log.sdk.info("authinfo:{}",request.getHeader("authinfo"));
         Log.sdk.info("request - {}", Arrays.toString(joinPoint.getArgs()));
 
     }

@@ -1,11 +1,30 @@
+
 spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/weblog?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: abc123
+  security:
+    user:
+      name: admin # 登录用户名
+      password: 123456 # 登录密码
+
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
 
 
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-value: 1 # 逻辑已删除值
+      logic-not-delete-value: 0 # 逻辑未删除值
+
+jwt:
+  # 签发人
+  issuer: zq
+  # 秘钥
+  secret: TnZKbAEciqKzEpnpyhIzFRjceZYSD8sNpSlYtLq6sLLlQNRL+Fv5AMaQnOP2DDJPy/9dmg0lp2Ga1x+YLpkhNw==
 
 
 

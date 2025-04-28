@@ -11,15 +11,12 @@ import java.util.Date;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/weblog/test")
+@RequestMapping("/admin/test")
 public class TestController {
 
 
     @GetMapping("/test1")
-    public String test1(String name) {
-        if (Objects.equals(name, "1")){
-            throw BizException.fail("数字等于1");
-        }
+    public String test1() {
         return "test1";
     }
 

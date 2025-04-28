@@ -1,5 +1,6 @@
 package com.szq.web.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -9,10 +10,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private JwtAuthenticationSecurityConfig jwtAuthenticationSecurityConfig;
+    private final JwtAuthenticationSecurityConfig jwtAuthenticationSecurityConfig;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

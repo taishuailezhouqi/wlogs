@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * 用户处理jwt用户身份验证过程
+ */
 public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
 
@@ -28,24 +31,24 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException, IOException, ServletException {
-        ObjectMapper mapper = new ObjectMapper();
-        // 解析提交的 JSON 数据
-        JsonNode jsonNode = mapper.readTree(request.getInputStream());
-        JsonNode usernameNode = jsonNode.get("username");
-        JsonNode passwordNode =  jsonNode.get("password");
+        ObjectMapper objectMapper = new ObjectMapper();
+        //解析提交的json数据 转换成树形json再获取
+        JsonNode jsonNode = objectMapper.readTree(request.getInputStream());
+        JsonNode username = jsonNode.get("username");
+        JsonNode password = jsonNode.get("password");
 
-        // 判断用户名、密码是否为空
-        if (Objects.isNull(usernameNode) || Objects.isNull(passwordNode)
-                || StringUtils.isBlank(usernameNode.textValue()) || StringUtils.isBlank(passwordNode.textValue())) {
+        //判断用户名和密码是否为空
+        if (Objects.isNull(username) || Objects.isNull(password)
+                || StringUtils.isBlank(username.asText()) || StringUtils.isBlank(password.asText())) {
             throw new UsernameOrPasswordNullException("用户名或密码不能为空");
         }
+        String usernameText = username.textValue();
+        String passwordText = password.textValue();
 
-        String username = usernameNode.textValue();
-        String password = passwordNode.textValue();
+        //将用户名和密码封装到对象中校验
+            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(usernameText, passwordText);
 
-        // 将用户名、密码封装到 Token 中
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken
-                = new UsernamePasswordAuthenticationToken(username, password);
+
         return getAuthenticationManager().authenticate(usernamePasswordAuthenticationToken);
     }
 }

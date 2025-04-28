@@ -18,6 +18,12 @@
     </properties>
 
     <dependencies>
+        <!-- knife4j -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
+            <version>4.5.0</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -25,6 +31,11 @@
         <dependency>
             <groupId>com.szq.web</groupId>
             <artifactId>web-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.szq.web</groupId>
+            <artifactId>web-admin</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- JWT -->
@@ -42,6 +53,10 @@
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-jackson</artifactId>
             <version>0.11.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
     </dependencies>
 

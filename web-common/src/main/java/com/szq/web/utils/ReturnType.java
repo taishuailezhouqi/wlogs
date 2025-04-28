@@ -19,6 +19,7 @@ public enum ReturnType {
     NO_LOGIN(10008, "用户未登录"),
     LOGIN_FAIL(20000, "登录失败"),
     USERNAME_OR_PWD_ERROR(20001, "用户名or密码错误"),
+    USERNAME_OR_PWD_NULL(20002, "用户名or密码为空"),
     REPEATEDREMINDER(10010,"请勿频繁提交");
 
 

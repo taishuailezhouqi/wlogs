@@ -1,6 +1,5 @@
 package com.szq.web.exception;
 
-
 import org.springframework.security.core.AuthenticationException;
 
 public class UsernameOrPasswordNullException extends AuthenticationException {
