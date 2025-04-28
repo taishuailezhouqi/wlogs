@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <logger name="org.springframework.web" level="DEBUG"/>
+
+    <property name="BASE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} - ${PID} - [%15.15t] - %X{uuid} - [%F:%L] - %m%n"/>
+    <property name="BASE_LOG_PATH" value="/data/log/weblog-admin/"/>
+    <property name="ERROR_LOG_FILE_NAME" value="error.log"/>
+    <property name="TIME_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} - [%15.15t] - %X{uuid} - [%F:%L] - %m%n"/>
+    <property name="TIME_LOG_FILE_NAME" value="time.log"/>
+
+    <!--日志级别颜色-->
+    <conversionRule conversionWord="color" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <property name="PATTERN_CONSOLE"
+              value="%date{yyyy-MM-dd HH:mm:ss.SSS} %color(%5p) %blue(${PID:-}) %magenta([%15.15t]) %cyan(%-30.30logger{25}) %magenta(.%-9.9M) %blue([%-3.4L]) : %m%n"/>
+
+
+    <appender name="sdk_appender" class="ch.qos.logback.classic.sift.SiftingAppender">
+        <discriminator>
+            <key>logName</key>
+            <defaultValue>default</defaultValue>
+        </discriminator>
+        <sift>
+            <appender name="${logName}_logger" class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <append>true</append>
+                <file>${BASE_LOG_PATH}/${logName}.log</file>
+                <encoder charset="UTF-8">
+                    <pattern>${BASE_LOG_PATTERN}</pattern>
+                </encoder>
+                <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <!--按天滚动-->
+                    <fileNamePattern>${BASE_LOG_PATH}/${logName}.log.%d{yyyy-MM-dd}</fileNamePattern>
+                    <!--项目启动时,删除超过7天的日志-->
+                    <cleanHistoryOnStart>true</cleanHistoryOnStart>
+                    <maxHistory>7</maxHistory>
+                </rollingPolicy>
+            </appender>
+        </sift>
+    </appender>
+
+    <appender name="error_appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${BASE_LOG_PATH}/${ERROR_LOG_FILE_NAME}</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${BASE_LOG_PATH}/${ERROR_LOG_FILE_NAME}.%d{yyyy-MM-dd}</FileNamePattern>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${BASE_LOG_PATTERN}</pattern>
+        </layout>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+    </appender>
+
+
+    <!-- 控制台输出 -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${PATTERN_CONSOLE}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="time_appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${BASE_LOG_PATH}/${TIME_LOG_FILE_NAME}</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${BASE_LOG_PATH}/${TIME_LOG_FILE_NAME}.%d{yyyy-MM-dd}</FileNamePattern>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${TIME_LOG_PATTERN}</pattern>
+        </layout>
+    </appender>
+
+    <logger name="sdk_logger" level="debug" additivity="false">
+        <appender-ref ref="sdk_appender"/>
+        <appender-ref ref="error_appender"/>
+    </logger>
+
+    <logger name="time_logger" level="debug" additivity="false">
+        <appender-ref ref="time_appender"/>
+    </logger>
+
+    <logger name="com.szq.web.mapper" level="DEBUG" additivity="false">
+        <appender-ref ref="sdk_appender"/>
+    </logger>
+</configuration>
