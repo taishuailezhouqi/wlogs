@@ -25,7 +25,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         // authorities 用于指定角色，这里写死为 ADMIN 管理员
         return org.springframework.security.core.userdetails.User.withUsername(user.getUsername())
                 .password(user.getPassword()) //验证密码
-//                .authorities("ADMIN")
+                .authorities("ADMIN")
                 .build();
     }
 }

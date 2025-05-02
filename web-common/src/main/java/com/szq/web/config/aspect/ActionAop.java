@@ -25,7 +25,6 @@ public class ActionAop {
     public void doBefore(JoinPoint joinPoint) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-        Log.sdk.info("authinfo:{}",request.getHeader("authinfo"));
         Log.sdk.info("request - {}", Arrays.toString(joinPoint.getArgs()));
 
     }

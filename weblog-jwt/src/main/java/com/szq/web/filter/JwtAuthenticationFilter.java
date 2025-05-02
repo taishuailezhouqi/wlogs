@@ -46,7 +46,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
         String passwordText = password.textValue();
 
         //将用户名和密码封装到对象中校验
-            UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(usernameText, passwordText);
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(usernameText, passwordText);
 
 
         return getAuthenticationManager().authenticate(usernamePasswordAuthenticationToken);
