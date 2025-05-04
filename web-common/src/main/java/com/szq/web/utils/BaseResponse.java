@@ -16,9 +16,9 @@ public class BaseResponse<T> {
 
     private Integer code;
 
-    private String msg;
+    private String message;
 
-    private T result;
+    private T data;
 
     public BaseResponse() {
 
@@ -26,20 +26,20 @@ public class BaseResponse<T> {
 
     public BaseResponse(ReturnType returnType) {
         this.code = returnType.getCode();
-        this.msg = returnType.getMsg();
+        this.message = returnType.getMsg();
     }
 
 
     public BaseResponse(ReturnType returnType, T t) {
         this.code = returnType.getCode();
-        this.msg = returnType.getMsg();
-        this.result = t;
+        this.message = returnType.getMsg();
+        this.data = t;
     }
 
     private BaseResponse(int code, String msg, T result) {
         this.code = code;
-        this.msg = msg;
-        this.result = result;
+        this.message = msg;
+        this.data = result;
     }
 
 

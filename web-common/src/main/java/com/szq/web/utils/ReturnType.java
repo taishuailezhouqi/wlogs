@@ -20,17 +20,17 @@ public enum ReturnType {
     LOGIN_FAIL(20000, "登录失败"),
     USERNAME_OR_PWD_ERROR(20001, "用户名or密码错误"),
     USERNAME_OR_PWD_NULL(20002, "用户名or密码为空"),
-    REPEATEDREMINDER(10010,"请勿频繁提交"), UNAUTHORIZED(20003, "未经授权");
+    REPEATEDREMINDER(10010,"请勿频繁提交"), UNAUTHORIZED(20003, "未经授权"), FORBIDDEN(20004, "演示账号仅支持查询操作！");
 
 
 
     private Integer code;
 
-    private String msg;
+    private String mssage;
 
     ReturnType(int code, String msg) {
         this.code = code;
-        this.msg = msg;
+        this.mssage = msg;
     }
 
     public static ReturnType getByCode(String msg) {
@@ -55,11 +55,11 @@ public enum ReturnType {
     }
 
     public String getMsg() {
-        return msg;
+        return mssage;
     }
 
     public void setMsg(String msg) {
-        this.msg = msg;
+        this.mssage = msg;
     }
 
 

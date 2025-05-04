@@ -1,8 +1,13 @@
 package com.szq.web.controller;
 
 import com.szq.web.exception.BizException;
+import com.szq.web.utils.BaseResponse;
+import com.szq.web.utils.Log;
 import io.jsonwebtoken.JwtParser;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,24 +25,12 @@ public class TestController {
         return "test1";
     }
 
-    public static void main(String[] args) {
-        // 获取当前日期
-        Date today = new Date();
-        System.out.println("今天的日期: " + today);
-
-        // 创建 Calendar 实例
-        Calendar calendar = Calendar.getInstance();
-
-        // 设置当前日期
-        calendar.setTime(today);
-        System.out.println("calendar = " + calendar);
-        // 当前日期加 7 天
-        calendar.add(Calendar.DATE, 7);
-
-        // 获取加 7 天后的日期
-        Date sevenDaysLater = calendar.getTime();
-
-        System.out.println("7 天后的日期: " + sevenDaysLater);
+    @PostMapping("/admin/update")
+    @ApiOperation(value = "测试更新接口")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public BaseResponse<Object> testUpdate() {
+        Log.sdk.info("更新成功...");
+        return BaseResponse.success();
     }
 
 }
