@@ -20,7 +20,10 @@ public enum ReturnType {
     LOGIN_FAIL(20000, "登录失败"),
     USERNAME_OR_PWD_ERROR(20001, "用户名or密码错误"),
     USERNAME_OR_PWD_NULL(20002, "用户名or密码为空"),
-    REPEATEDREMINDER(10010,"请勿频繁提交"), UNAUTHORIZED(20003, "未经授权"), FORBIDDEN(20004, "演示账号仅支持查询操作！");
+    REPEATEDREMINDER(10010,"请勿频繁提交"),
+    UNAUTHORIZED(20003, "未经授权"),
+    FORBIDDEN(20004, "演示账号仅支持查询操作！"),
+    USERNAME_NOT_FOUND(20005, "该用户不存在");
 
 
 
