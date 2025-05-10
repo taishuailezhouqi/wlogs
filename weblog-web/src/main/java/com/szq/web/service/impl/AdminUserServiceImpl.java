@@ -1,6 +1,6 @@
-package com.szq.web.config.service.impl;
+package com.szq.web.service.impl;
 
-import com.szq.web.config.service.AdminUserService;
+import com.szq.web.service.AdminUserService;
 import com.szq.web.mapper.UserMapper;
 import com.szq.web.model.User;
 import com.szq.web.model.vo.UpdateAdminUserPasswordReqVO;

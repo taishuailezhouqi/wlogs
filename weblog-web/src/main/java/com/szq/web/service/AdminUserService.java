@@ -1,4 +1,4 @@
-package com.szq.web.config.service;
+package com.szq.web.service;
 
 import com.szq.web.model.User;
 import com.szq.web.model.vo.UpdateAdminUserPasswordReqVO;
