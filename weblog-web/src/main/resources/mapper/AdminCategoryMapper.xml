@@ -5,4 +5,17 @@
 <!--接口全类名-->
 <mapper namespace="com.szq.web.mapper.CategoryMapper">
 
+    <select id="findCategoryPage" resultType="com.szq.web.model.Category">
+        select * from t_category
+        <where>
+            <if test="category.name != null and category.name != ''">
+                name like concat('%',#{category.name},'%')
+            </if>
+            <if test="category.startDate != null  and category.endDate != null ">
+                and create_time >= #{category.startDate} and create_time &lt;= #{category.endDate}
+            </if>
+
+        </where>
+        order by id desc
+    </select>
 </mapper>

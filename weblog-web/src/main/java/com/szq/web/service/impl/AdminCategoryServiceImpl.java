@@ -3,12 +3,16 @@ package com.szq.web.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.sun.javaws.Main;
 import com.szq.web.service.AdminCategoryService;
 import com.szq.web.mapper.CategoryMapper;
 import com.szq.web.model.Category;
 import com.szq.web.utils.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -21,8 +25,9 @@ public class AdminCategoryServiceImpl extends ServiceImpl<CategoryMapper,Categor
      */
     @Override
     public Page<Category> findCategoryPage(Category category, Page<Category> page) {
-        LambdaQueryWrapper<Category> wrapper = new LambdaQueryWrapper<Category>().orderByDesc(Category::getId);
-        return this.page(page,wrapper);
+        return  categoryMapper.findCategoryPage(category,page);
+//        LambdaQueryWrapper<Category> wrapper = new LambdaQueryWrapper<Category>().orderByDesc(Category::getId);
+//        this.page(page,wrapper);
     }
 
     /**

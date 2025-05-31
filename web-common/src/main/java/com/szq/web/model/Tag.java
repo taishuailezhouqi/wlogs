@@ -9,31 +9,48 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDateTime;
 import java.util.Date;
 
+/**
+ * 文章标签表
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@TableName("t_category")
-public class Category {
+@TableName("t_tag")
+public class Tag {
 
+    /**
+     * 标签ID
+     */
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    @NotBlank(message = "分类名称不能为空")
+    /**
+     * 标签名称
+     */
+    @NotBlank(message = "标签名称不能为空")
     private String name;
 
+    /**
+     * 创建时间
+     */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     private Date createTime;
+
+    /**
+     * 最后一次更新时间
+     */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
     private Date updateTime;
 
-    private Boolean isDeleted;
+    /**
+     * 逻辑删除标志位：0：未删除 1：已删除
+     */
+    private Integer isDeleted;
 
     @TableField(exist = false)
     private Integer current;
