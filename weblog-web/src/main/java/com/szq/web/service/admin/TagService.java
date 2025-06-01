@@ -1,9 +1,7 @@
-package com.szq.web.service;
+package com.szq.web.service.admin;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.szq.web.model.Category;
 import com.szq.web.model.Tag;
 import com.szq.web.utils.BaseResponse;
 

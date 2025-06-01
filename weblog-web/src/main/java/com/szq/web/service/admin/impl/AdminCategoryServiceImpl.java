@@ -1,18 +1,14 @@
-package com.szq.web.service.impl;
+package com.szq.web.service.admin.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.sun.javaws.Main;
-import com.szq.web.service.AdminCategoryService;
+import com.szq.web.service.admin.AdminCategoryService;
 import com.szq.web.mapper.CategoryMapper;
 import com.szq.web.model.Category;
 import com.szq.web.utils.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

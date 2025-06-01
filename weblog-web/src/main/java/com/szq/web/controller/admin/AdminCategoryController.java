@@ -3,7 +3,7 @@ package com.szq.web.controller.admin;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.szq.web.mapper.CategoryMapper;
-import com.szq.web.service.AdminCategoryService;
+import com.szq.web.service.admin.AdminCategoryService;
 import com.szq.web.model.Category;
 import com.szq.web.utils.BaseResponse;
 import org.springframework.beans.factory.annotation.Autowired;

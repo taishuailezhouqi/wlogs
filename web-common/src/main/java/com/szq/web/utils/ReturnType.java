@@ -23,7 +23,8 @@ public enum ReturnType {
     REPEATEDREMINDER(10010,"请勿频繁提交"),
     UNAUTHORIZED(20003, "未经授权"),
     FORBIDDEN(20004, "演示账号仅支持查询操作！"),
-    USERNAME_NOT_FOUND(20005, "该用户不存在");
+    USERNAME_NOT_FOUND(20005, "该用户不存在"),
+    FILE_UPLOAD_FAILED(2006, "文件上传失败");
 
 
 

@@ -1,4 +1,4 @@
-package com.szq.web.service;
+package com.szq.web.service.admin;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;

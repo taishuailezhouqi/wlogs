@@ -1,6 +1,6 @@
 package com.szq.web.controller.admin;
 
-import com.szq.web.service.AdminUserService;
+import com.szq.web.service.admin.AdminUserService;
 import com.szq.web.model.User;
 import com.szq.web.model.vo.UpdateAdminUserPasswordReqVO;
 import com.szq.web.utils.BaseResponse;
