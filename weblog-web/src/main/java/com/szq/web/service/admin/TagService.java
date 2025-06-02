@@ -18,4 +18,9 @@ public interface TagService extends IService<Tag> {
      * 添加标签
      */
     BaseResponse<Object> add(List<String> tag);
+
+    /**
+     * 模糊查询
+     */
+    List<Tag> search(Tag tag);
 }

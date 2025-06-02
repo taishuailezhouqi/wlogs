@@ -4,6 +4,7 @@ import com.szq.web.exception.BizException;
 import com.szq.web.model.vo.UploadFileRspVO;
 import com.szq.web.service.admin.AdminFileService;
 import com.szq.web.utils.BaseResponse;
+import com.szq.web.utils.Log;
 import com.szq.web.utils.MinioUtil;
 import com.szq.web.utils.ReturnType;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +32,7 @@ public class AdminFileServiceImpl implements AdminFileService {
             // 构建成功返参，将图片的访问链接返回
             return BaseResponse.success(UploadFileRspVO.builder().url(url).build());
         } catch (Exception e) {
-            log.error("==> 上传文件至 Minio 错误: ", e);
+            Log.sdk.error("==> 上传文件至 Minio 错误: ", e);
             // 手动抛出业务异常，提示 “文件上传失败”
             throw new BizException(ReturnType.FILE_UPLOAD_FAILED);
         }

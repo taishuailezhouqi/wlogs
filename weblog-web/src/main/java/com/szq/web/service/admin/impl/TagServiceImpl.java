@@ -1,6 +1,7 @@
 package com.szq.web.service.admin.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.szq.web.exception.BizException;
@@ -13,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -24,6 +26,16 @@ public class TagServiceImpl extends ServiceImpl<TagMapper,Tag> implements TagSer
 
     private final TagMapper tagMapper;
 
+    /**
+     * 模糊查询
+     *
+     */
+    @Override
+    public List<Tag> search(Tag tag) {
+        String name = tag.getName();
+        return baseMapper.selectList(new LambdaUpdateWrapper<>(Tag.class)
+                .like(StringUtils.isNotBlank(name), Tag::getName, name));
+    }
 
     /**
      * 分页带条件查询
