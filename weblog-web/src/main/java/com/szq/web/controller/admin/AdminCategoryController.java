@@ -2,15 +2,13 @@ package com.szq.web.controller.admin;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.szq.web.mapper.ArticleCategoryRelMapper;
-import com.szq.web.mapper.CategoryMapper;
+import com.szq.web.mapper.admin.AdminArticleCategoryRelMapper;
+import com.szq.web.mapper.admin.AdminCategoryMapper;
 import com.szq.web.model.ArticleCategoryRel;
 import com.szq.web.service.admin.AdminCategoryService;
 import com.szq.web.model.Category;
 import com.szq.web.utils.BaseResponse;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +21,9 @@ public class AdminCategoryController {
 
     private final AdminCategoryService categoryService;
 
-    private final CategoryMapper categoryMapper;
+    private final AdminCategoryMapper categoryMapper;
 
-    private final ArticleCategoryRelMapper articleCategoryRelMapper;
+    private final AdminArticleCategoryRelMapper articleCategoryRelMapper;
 
 
     /**

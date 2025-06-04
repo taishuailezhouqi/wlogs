@@ -1,7 +1,7 @@
 package com.szq.web.service.admin.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.szq.web.mapper.AdminBlogMapper;
+import com.szq.web.mapper.admin.AdminBlogMapper;
 import com.szq.web.model.BlogSettings;
 import com.szq.web.service.admin.AdminBlogSettingsService;
 import com.szq.web.utils.BaseResponse;

@@ -2,11 +2,10 @@ package com.szq.web.controller.admin;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.szq.web.mapper.ArticleTagRelMapper;
+import com.szq.web.mapper.admin.AdminArticleTagRelMapper;
 import com.szq.web.model.ArticleTagRel;
 import com.szq.web.model.Tag;
-import com.szq.web.service.admin.ArticleTagRelService;
-import com.szq.web.service.admin.TagService;
+import com.szq.web.service.admin.AdminTagService;
 import com.szq.web.utils.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
@@ -20,10 +19,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin/tag")
 @RequiredArgsConstructor
-public class TagController {
+public class AdminTagController {
 
-    private final TagService tagService;
-    private  final ArticleTagRelMapper articleTagRelMapper;
+    private final AdminTagService tagService;
+    private  final AdminArticleTagRelMapper articleTagRelMapper;
 
     /**
      * 分页带条件查询

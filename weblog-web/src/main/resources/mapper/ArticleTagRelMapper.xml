@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口全类名-->
+<mapper namespace="com.szq.web.mapper.web.ArticleTagRelMapper">
+
+    <select id="selectTagByArticleId" resultType="com.szq.web.model.Tag">
+        SELECT a.`name` as name, a.id as id
+        FROM `t_tag` a
+                 left join t_article_tag_rel s
+                           on a.id = s.tag_id
+        where s.article_id = #{articleId}
+    </select>
+</mapper>

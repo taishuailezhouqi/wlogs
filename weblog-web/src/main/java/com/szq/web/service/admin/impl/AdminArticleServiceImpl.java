@@ -2,22 +2,21 @@ package com.szq.web.service.admin.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.szq.web.exception.BizException;
-import com.szq.web.mapper.AdminArticleMapper;
-import com.szq.web.mapper.ArticleCategoryRelMapper;
-import com.szq.web.mapper.ArticleContentMapper;
-import com.szq.web.mapper.CategoryMapper;
+import com.szq.web.mapper.admin.AdminArticleMapper;
+import com.szq.web.mapper.admin.AdminArticleCategoryRelMapper;
+import com.szq.web.mapper.admin.AdminArticleContentMapper;
+import com.szq.web.mapper.admin.AdminCategoryMapper;
 import com.szq.web.model.*;
 import com.szq.web.model.vo.DeleteArticleReqVO;
 import com.szq.web.model.vo.FindArticleDetailRspVO;
 import com.szq.web.model.vo.PublishArticleReqVO;
 import com.szq.web.model.vo.UpdateArticleReqVO;
 import com.szq.web.service.admin.AdminArticleService;
-import com.szq.web.service.admin.ArticleTagRelService;
-import com.szq.web.service.admin.TagService;
+import com.szq.web.service.admin.AdminArticleTagRelService;
+import com.szq.web.service.admin.AdminTagService;
 import com.szq.web.utils.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -36,11 +35,11 @@ import java.util.stream.Stream;
 public class AdminArticleServiceImpl extends ServiceImpl<AdminArticleMapper, Article> implements AdminArticleService {
 
 
-    private final ArticleContentMapper articleContentMapper;
-    private final ArticleCategoryRelMapper articleCategoryRelMapper;
-    private final ArticleTagRelService articleTagRelService;
-    private final TagService tagService;
-    private final CategoryMapper categoryMapper;
+    private final AdminArticleContentMapper articleContentMapper;
+    private final AdminArticleCategoryRelMapper articleCategoryRelMapper;
+    private final AdminArticleTagRelService articleTagRelService;
+    private final AdminTagService tagService;
+    private final AdminCategoryMapper categoryMapper;
 
 
     /**

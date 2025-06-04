@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.szq.web.service.admin.AdminCategoryService;
-import com.szq.web.mapper.CategoryMapper;
+import com.szq.web.mapper.admin.AdminCategoryMapper;
 import com.szq.web.model.Category;
 import com.szq.web.utils.BaseResponse;
 import lombok.RequiredArgsConstructor;
@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class AdminCategoryServiceImpl extends ServiceImpl<CategoryMapper,Category> implements AdminCategoryService {
+public class AdminCategoryServiceImpl extends ServiceImpl<AdminCategoryMapper,Category> implements AdminCategoryService {
 
-    private final CategoryMapper categoryMapper;
+    private final AdminCategoryMapper categoryMapper;
 
     /**
      * 分页查询

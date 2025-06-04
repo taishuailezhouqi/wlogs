@@ -1,10 +1,12 @@
-package com.szq.web.model;
+package com.szq.web.model.vo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.szq.web.model.Category;
+import com.szq.web.model.Tag;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +22,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @TableName("t_article")
-public class Article {
+public class ArticleVO {
 
     @TableId(type = IdType.AUTO)
     private Long id;

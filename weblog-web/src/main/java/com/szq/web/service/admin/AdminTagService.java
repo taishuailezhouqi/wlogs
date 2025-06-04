@@ -7,7 +7,7 @@ import com.szq.web.utils.BaseResponse;
 
 import java.util.List;
 
-public interface TagService extends IService<Tag> {
+public interface AdminTagService extends IService<Tag> {
 
     /**
      * 分页带条件查询

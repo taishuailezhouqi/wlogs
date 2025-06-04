@@ -5,26 +5,25 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.szq.web.exception.BizException;
-import com.szq.web.mapper.TagMapper;
+import com.szq.web.mapper.admin.AdminTagMapper;
 import com.szq.web.model.Tag;
-import com.szq.web.service.admin.TagService;
+import com.szq.web.service.admin.AdminTagService;
 import com.szq.web.utils.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class TagServiceImpl extends ServiceImpl<TagMapper,Tag> implements TagService{
+public class AdminTagServiceImpl extends ServiceImpl<AdminTagMapper,Tag> implements AdminTagService {
 
 
-    private final TagMapper tagMapper;
+    private final AdminTagMapper tagMapper;
 
     /**
      * 模糊查询
